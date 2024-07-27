@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const PropertyCard = ({ property }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4">
+    <div className="container mx-auto max-w-sm rounded overflow-hidden shadow-lg m-4">
       <img className="w-full" src={property.images[0]} alt={property.propertyName} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{property.propertyName}</div>

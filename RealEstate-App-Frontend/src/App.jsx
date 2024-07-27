@@ -1,13 +1,13 @@
 import Header from "./Components/Header"
+import Home from "./Components/Home"
 import PropertyList from "./Components/PropertyList"
-import PropertySearch from "./Components/PropertySearch"
 
 function App() {
 
   return (
     <>
       <Header />
-      <PropertySearch />
+      <Home />
       <PropertyList />
     </>
   )

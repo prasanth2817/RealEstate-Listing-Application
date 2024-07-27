@@ -1,5 +1,20 @@
+@import './tailwind.css';
+
+body{
+  margin: 0;
+ }
+ header{
+  z-index: 1000;
+  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.3);
+ }
 section {
     min-height: 100vh;
-    padding: 2rem 9%;
     width: 100%;
+  }
+  #home{
+    overflow: hidden;
+    width: 100%;
+    background: url("https://res.cloudinary.com/dlovthlr8/image/upload/v1721895377/library/ce5r3czzefwxikzteym9.jpg")lightgray 50% / cover
+    no-repeat;
+    opacity: 0.9;
   }
