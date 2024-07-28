@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 
 function PropertySearch() {
     const [query, setQuery] = useState('');
     const [propertyType, setPropertyType] = useState('');
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
-    const [properties, setProperties] = useState([]);
+    const navigate = useNavigate();
 
     const handleSearch = async () => {
         try {
@@ -18,7 +20,7 @@ function PropertySearch() {
                     maxPrice,
                 },
             });
-            setProperties(response.data);
+           navigate('/results', { state: { properties: response.data } })
         } catch (error) {
             console.error("Error searching properties:", error);
         }
@@ -73,17 +75,6 @@ function PropertySearch() {
                         Search
                     </button>
                     </div>
-                </div>
-                <div className="mt-8">
-                    {properties.map((property, index) => (
-                        <div key={index} className="p-4 bg-white mb-4 rounded shadow-md">
-                            <h3 className="text-xl font-bold">{property.propertyName}</h3>
-                            <p>Type: {property.propertyType}</p>
-                            <p>Location: {property.location}</p>
-                            <p>Price: {property.price}</p>
-                            <p>{property.description}</p>
-                        </div>
-                    ))}
                 </div>
             </div>
     );

@@ -1,10 +1,14 @@
+import PropertyList from "./PropertyList";
 import PropertySearch from "./PropertySearch";
 
 function Home() {
   return (
-    <section className="bg-contain" id="home">
-      <div className="">
+    <section>
+      <div className="" id="home">
         <PropertySearch />
+      </div>
+      <div>
+        <PropertyList />
       </div>
     </section>
   );

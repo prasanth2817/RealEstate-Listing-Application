@@ -1,35 +1,61 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ properties }) => {
+
+  const navigate = useNavigate();
+
+  const handleEdit = (propertyId) => {
+    console.log(`Edit property with ID: ${propertyId}`);
+    navigate(`/edit/${propertyId}`);
+  };
+
+  const handleDelete = (propertyId) => {
+    console.log(`Delete property with ID: ${propertyId}`);
+  };
   return (
-    <div className="container mx-auto max-w-sm rounded overflow-hidden shadow-lg m-4">
-      <img className="w-full" src={property.images[0]} alt={property.propertyName} />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{property.propertyName}</div>
-        <p className="text-gray-700 text-base">
-          {property.description}
-        </p>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{property.propertyType}</span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{property.location}</span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${property.price}</span>
-        <span className={`inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 ${property.PropertyStatus === 'Not Sold' ? 'bg-red-500' : 'bg-green-500'}`}>{property.PropertyStatus}</span>
-      </div>
-    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {properties.map((property, index) => (
+                <div key={index} className="border rounded p-4 shadow">
+                    <img src={property.images[0]} alt={property.propertyName} className="w-full h-48 object-cover rounded" />
+                    <h3 className="text-xl font-bold mt-2">{property.propertyName}</h3>
+                    <p>Type: {property.propertyType}</p>
+                    <p>Location: {property.location}</p>
+                    <p>Price: ${property.price}</p>
+                    <p>{property.description}</p>
+                    <p>Status: {property.PropertyStatus}</p>
+                    <div className="mt-4 flex justify-between">
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded"
+              onClick={() => handleEdit(property.id)}
+            >
+              Edit
+            </button>
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded"
+              onClick={() => handleDelete(property.id)}
+            >
+              Delete
+            </button>
+          </div>
+                </div>
+            ))}
+        </div>
   );
 };
 
 PropertyCard.propTypes = {
-  property: PropTypes.shape({
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    propertyName: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    propertyType: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    PropertyStatus: PropTypes.string.isRequired,
-  }).isRequired,
+  properties: PropTypes.arrayOf(
+      PropTypes.shape({
+          images: PropTypes.arrayOf(PropTypes.string).isRequired,
+          propertyName: PropTypes.string.isRequired,
+          description: PropTypes.string.isRequired,
+          propertyType: PropTypes.string.isRequired,
+          location: PropTypes.string.isRequired,
+          price: PropTypes.number.isRequired,
+          PropertyStatus: PropTypes.string.isRequired,
+      })
+  ).isRequired,
 };
 
 export default PropertyCard;

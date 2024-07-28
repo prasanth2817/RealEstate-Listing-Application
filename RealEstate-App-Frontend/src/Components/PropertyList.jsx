@@ -24,7 +24,7 @@ const PropertyList = () => {
       <div className="flex flex-wrap justify-center">
         {properties.length > 0 ? (
           properties.map((property) => (
-            <PropertyCard key={property._id} property={property} />
+            <PropertyCard key={property._id} properties={properties} />
           ))
         ) : (
           <p className="text-center">No properties found</p>
