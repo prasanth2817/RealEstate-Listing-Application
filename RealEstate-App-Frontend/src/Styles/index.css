@@ -18,3 +18,24 @@ section {
     no-repeat;
     opacity: 0.9;
   }
+  a{
+    text-decoration: none !important;
+  }
+  /* Custom Dropdown styles */
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  color: #212529;
+}
+
+.dropdown-item:hover {
+  background-color: #e9ecef;
+}

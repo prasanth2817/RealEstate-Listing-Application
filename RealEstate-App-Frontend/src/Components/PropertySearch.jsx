@@ -36,9 +36,9 @@ function PropertySearch() {
                         placeholder="Search by Property Name or Location"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
-                        className=" w-full p-4 pl-10 border rounded-lg bg-slate-200 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        className=" w-full p-4 text-xl pl-12 border rounded-lg bg-slate-200 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
-                    <i className="fas fa-search absolute left-3 top-5 text-gray-400"></i>
+                    
                     </div>
                     <div className='flex gap-4'>
                     <select

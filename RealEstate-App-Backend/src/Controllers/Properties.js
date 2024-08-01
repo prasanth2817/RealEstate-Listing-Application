@@ -13,6 +13,8 @@ const CreateProperty = async(req,res) => {
       if(!propertyName || !propertyType || !location || !price || !description ){
         return res.status(400).send({ message: "Required fields are missing" });
       }
+      const {userId} = req.params.id;
+
       // Handle image paths (assuming req.files is an array of file objects)
       const imagePaths = req.files.map((file) => file.path);
       const newProperty = new PropertyModel({
@@ -21,7 +23,8 @@ const CreateProperty = async(req,res) => {
         location,
         price,
         description,
-        images: imagePaths
+        images: imagePaths,
+        userId
     });
     // Save the new Store to the database
     await newProperty.save();
